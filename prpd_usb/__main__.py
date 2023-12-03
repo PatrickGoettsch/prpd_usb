@@ -59,7 +59,7 @@ def main():
     p_mqtt = subparsers.add_parser(
         'mqtt', help='publish data to mqtt')
     add_mqtt_args(p_mqtt)
-    p_mqtt.add_argument("--mqtt-prefix", default="prpd_usb")
+    p_mqtt.add_argument("--mqtt-prefix", default="nedap_powerrouter")
     p_mqtt.add_argument("--mqtt-payload-simple", action="store_true")
     p_mqtt.set_defaults(func=run_mqtt)
 
