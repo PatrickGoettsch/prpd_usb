@@ -8,13 +8,14 @@ from .. import prpd
 
 def main(prpd_reader, args):
     auth = {}
-    if args.password and args.username:
-        auth["password"] = args.password
-        auth["username"] = args.username
+    print(args)
+    if args.mqtt_password and args.mqtt_username:
+        auth["password"] = args.mqtt_password
+        auth["username"] = args.mqtt_username
     while True:
         messages = []
         for command, field, _time, value in prpd_reader.read():
-            if args.payload_simple:
+            if args.mqtt_payload_simple:
                 payload = value
             else:
                 payload = {
@@ -22,8 +23,8 @@ def main(prpd_reader, args):
                     "unit": field.unit,
                 }
             messages.append({
-                "topic": f"{args.prefix}/{command.name}/{field.name}",
+                "topic": f"{args.mqtt_prefix}/{command.name}/{field.name}",
                 "payload": json.dumps(payload),
             })
-        publish.multiple(messages, hostname=args.hostname, port=args.port, auth=auth)
-        time.sleep(args.interval)
+        publish.multiple(messages, hostname=args.mqtt_hostname, port=args.mqtt_port, auth=auth)
+        time.sleep(args.mqtt_interval)
