@@ -31,6 +31,12 @@ pip install .
 prpd_usb -vvv stdout
 ```
 
+You can also install the project with 
+```
+pip install -e .
+```
+if you want edit the code wthout having to install the package again.
+
 ## Deployment
 
 *This is just an example how to make use of `prpd_usb` there are many other
@@ -103,6 +109,11 @@ dashboard you can import into grafana. Please note that this dashboard shows
 the fields of `PR37Bi` if you use this tool with another model you will have to
 adapt the dashboard on your own. All fields should start with `prpd_usb_`.
 
+## MQTT
+```
+~/prpd_usb/.venv/bin/prpd_usb mqtt  --mqtt-hostname your_mqtt_ip --mqtt-username username --mqtt-password your_passwd --mqtt-interval 5
+
+```
 
 ## Updating
 
