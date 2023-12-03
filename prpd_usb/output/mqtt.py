@@ -8,7 +8,6 @@ from .. import prpd
 
 def main(prpd_reader, args):
     auth = {}
-    print(args)
     if args.mqtt_password and args.mqtt_username:
         auth["password"] = args.mqtt_password
         auth["username"] = args.mqtt_username
